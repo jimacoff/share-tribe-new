@@ -12,3 +12,15 @@
 
 //= require_tree ./partials
 //= require_tree ./views
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: auto;
+  background-color: #ffffff;
+}
+#homepage-filters {
+  margin-top: 60px;
+}

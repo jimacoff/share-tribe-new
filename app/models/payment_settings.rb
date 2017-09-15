@@ -22,6 +22,5 @@
 #
 
 class PaymentSettings < ApplicationRecord
-
   validates_presence_of(:community_id)
 end
