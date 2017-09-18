@@ -1,4 +1,4 @@
-class ChangeKassiEventsWithoutFeedbackToPending < ActiveRecord::Migration
+class ChangeKassiEventsWithoutFeedbackToPending < ActiveRecord::Migration[5.1]
   def self.up
     KassiEvent.all.each do |kassi_event|
       if kassi_event.person_comments.size < 1

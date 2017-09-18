@@ -1,4 +1,4 @@
-class AddVisibilityToListing < ActiveRecord::Migration
+class AddVisibilityToListing < ActiveRecord::Migration[5.1]
   def self.up
     add_column :listings, :visibility, :string, :default => "everybody"
   end
