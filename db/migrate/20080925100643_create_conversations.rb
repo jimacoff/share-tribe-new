@@ -1,4 +1,4 @@
-class CreateConversations < ActiveRecord::Migration
+class CreateConversations < ActiveRecord::Migration[5.1]
   def self.up
     create_table :conversations do |t|
       t.string :title
