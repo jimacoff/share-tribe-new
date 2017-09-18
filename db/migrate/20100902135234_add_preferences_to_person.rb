@@ -1,4 +1,4 @@
-class AddPreferencesToPerson < ActiveRecord::Migration
+class AddPreferencesToPerson < ActiveRecord::Migration[5.1]
   def self.up
     add_column :people, :preferences, :string
   end

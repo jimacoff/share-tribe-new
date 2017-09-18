@@ -1,4 +1,4 @@
-class ChangeListingVisiblityKassiUsersToCommunities < ActiveRecord::Migration
+class ChangeListingVisiblityKassiUsersToCommunities < ActiveRecord::Migration[5.1]
   def self.up
     Listing.update_all("visibility = 'communities'", "visibility LIKE 'kassi_users'")
   end
