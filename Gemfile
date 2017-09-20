@@ -150,7 +150,7 @@ group :development, :test do
 end
 
 
-gem 'therubyracer', '~> 0.12.3', platforms: :ruby
+# gem 'therubyracer', '~> 0.12.3', platforms: :ruby
 gem 'js-routes', '~> 1.3.3'
 
 # Color utilities needed for landing page
@@ -175,4 +175,13 @@ group :development do
   gem 'capistrano-rails', require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rvm'
+  gem 'capistrano-npm'
+end
+
+group :production do
+  # needed for capistrano - delayed job
+  gem 'daemons'
+  # needed for precompiling assets
+  gem 'therubyracer', '~> 0.12.3', platforms: :ruby
+  gem 'execjs'
 end
