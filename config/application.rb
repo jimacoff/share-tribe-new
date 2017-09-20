@@ -117,6 +117,7 @@ module Kassi
 
     # List of removed locales
     config.REMOVED_LOCALES = Sharetribe::REMOVED_LOCALES
+    config.AVAILABLE_LOCALES = Sharetribe::AVAILABLE_LOCALES
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
