@@ -128,34 +128,34 @@ class AddDefaultCategories < ActiveRecord::Migration[4.2]
       end
 
 
-      ShareType.find_each do |share_type|
-        share_type_name = share_type.name
-        #see if the name ends with "_alt\d*" meaning that it's an alternative share_type in the DB but can use the same translations as the original
-        if share_type_name.match(/_alt\d*$/)
-          share_type_name = share_type_name.split("_alt").first
-        end
-        begin
-          translated_name = (translations[locale] && translations[locale][share_type_name]) || I18n.t!(share_type_name, :locale => locale, :scope => ["common", "share_types"], :raise => true)
+      # ShareType.find_each do |share_type|
+      #   share_type_name = share_type.name
+      #   #see if the name ends with "_alt\d*" meaning that it's an alternative share_type in the DB but can use the same translations as the original
+      #   if share_type_name.match(/_alt\d*$/)
+      #     share_type_name = share_type_name.split("_alt").first
+      #   end
+      #   begin
+      #     translated_name = (translations[locale] && translations[locale][share_type_name]) || I18n.t!(share_type_name, :locale => locale, :scope => ["common", "share_types"], :raise => true)
 
-          begin
-            translated_description = (translations[locale] && translations[locale][:descriptions] && translations[locale][:descriptions][share_type_name]) || I18n.t!(share_type_name, :locale => locale, :scope => ["listings", "new"], :raise => true)
-          rescue
-            translated_description = nil #if description is nil, still continue to translate the name
-          end
-          existing_translation = ShareTypeTranslation.find_by_share_type_id_and_locale(share_type.id, locale)
-          if existing_translation
-            existing_translation.update_attribute(:name, translated_name)
-          else
-            unless params[:without_description_translations]
-              ShareTypeTranslation.create(:share_type => share_type, :locale => locale, :name => translated_name)
-            else
-              ShareTypeTranslation.create(:share_type => share_type, :locale => locale, :name => translated_name)
-            end
-          end
-        rescue I18n::MissingTranslationData
-          # no need to store anything if no translation found
-        end
-      end
+      #     begin
+      #       translated_description = (translations[locale] && translations[locale][:descriptions] && translations[locale][:descriptions][share_type_name]) || I18n.t!(share_type_name, :locale => locale, :scope => ["listings", "new"], :raise => true)
+      #     rescue
+      #       translated_description = nil #if description is nil, still continue to translate the name
+      #     end
+      #     existing_translation = ShareTypeTranslation.find_by_share_type_id_and_locale(share_type.id, locale)
+      #     if existing_translation
+      #       existing_translation.update_attribute(:name, translated_name)
+      #     else
+      #       unless params[:without_description_translations]
+      #         ShareTypeTranslation.create(:share_type => share_type, :locale => locale, :name => translated_name)
+      #       else
+      #         ShareTypeTranslation.create(:share_type => share_type, :locale => locale, :name => translated_name)
+      #       end
+      #     end
+      #   rescue I18n::MissingTranslationData
+      #     # no need to store anything if no translation found
+      #   end
+      # end
     end
   end
 end
