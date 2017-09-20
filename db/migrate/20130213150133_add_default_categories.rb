@@ -75,7 +75,7 @@ class AddDefaultCategories < ActiveRecord::Migration[4.2]
           c = Category.find_by_name(subcategory) || Category.create({:name => subcategory, :icon => subcategory, :parent_id => parent.id})
           # As subcategories won't get their own link to share_types (as they inherit that from parent category)
           # We create a CommunityCategory entry here to mark that these subcategories exist in the default tribe
-          CommunityCategory.create(:category => c, :community_id => community_id) unless CommunityCategory.find_by_category_id_and_community_id(c.id, community_id)
+          # CommunityCategory.create(:category => c, :community_id => community_id) unless CommunityCategory.find_by_category_id_and_community_id(c.id, community_id)
         end
       else
         puts "Invalid data for categories. It must be array of Strings and Hashes."
@@ -88,7 +88,7 @@ class AddDefaultCategories < ActiveRecord::Migration[4.2]
       s =  ShareType.find_by_name(share_type) || ShareType.create(:name => share_type, :icon => (details[:icon] || share_type), :parent => parent)
       details[:categories].each do |category_name|
         c = Category.find_by_name(category_name)
-        CommunityCategory.create(:category => c, :share_type => s, :community_id => community_id) if c && ! CommunityCategory.find_by_category_id_and_share_type_id_and_community_id(c.id, s.id, community_id)
+        # CommunityCategory.create(:category => c, :share_type => s, :community_id => community_id) if c && ! CommunityCategory.find_by_category_id_and_share_type_id_and_community_id(c.id, s.id, community_id)
       end
 
     end
