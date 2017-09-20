@@ -176,6 +176,7 @@ group :development do
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rvm'
   gem 'capistrano-npm'
+  gem 'capistrano-foreman'
 end
 
 group :production do
