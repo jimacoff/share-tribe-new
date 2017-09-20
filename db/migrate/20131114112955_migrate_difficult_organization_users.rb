@@ -136,44 +136,44 @@ class MigrateDifficultOrganizationUsers < ActiveRecord::Migration[4.2]
     #
     # Case: Organization has multiple users
     #
-    puts ""
-    puts "#"
-    puts "# Case: Organization has multiple users"
-    puts "#"
-    puts ""
-    Organization.select { |org| org.members.count > 1 } .each do |org| 
-      puts "'#{org.name}' has more than one user: #{org.members.collect(&:name)}"
-      migrate_organization_more_than_one_user!(org, org.members)
-    end
+    # puts ""
+    # puts "#"
+    # puts "# Case: Organization has multiple users"
+    # puts "#"
+    # puts ""
+    # Organization.select { |org| org.members.count > 1 } .each do |org| 
+    #   puts "'#{org.name}' has more than one user: #{org.members.collect(&:name)}"
+    #   migrate_organization_more_than_one_user!(org, org.members)
+    # end
     #
     # Case: User has multiple organizations
     #
     # This might take a while...
 
-    puts ""
-    puts "#"
-    puts "# Case: User has multiple organizations"
-    puts "#"
-    puts ""
-    Person.select { |person| person.organizations.count > 1 } .each do |person| 
-      puts "'#{person.name}' represents more than one organizations: #{person.organizations.collect(&:name)}"
-      migrate_user_more_than_one_organization!(person, person.organizations)
-    end
+    # puts ""
+    # puts "#"
+    # puts "# Case: User has multiple organizations"
+    # puts "#"
+    # puts ""
+    # Person.select { |person| person.organizations.count > 1 } .each do |person| 
+    #   puts "'#{person.name}' represents more than one organizations: #{person.organizations.collect(&:name)}"
+    #   migrate_user_more_than_one_organization!(person, person.organizations)
+    # end
 
     #
     # Case: Organization representative is a member of multiple tribes
     #
     # This might take a while...
 
-    puts ""
-    puts "#"
-    puts "# Case: Organization representative is a member of multiple tribes"
-    puts "#"
-    puts ""
-    Person.select { |person| person.organizations.count > 0 && person.communities.count > 1 } .each do |person|
-      puts "'#{person.name}' represents organizations #{person.organizations.collect(&:name)} and is a member in communities: #{person.communities.collect(&:name)}"
-      migrate_organization_member_multiple_communities!(person, person.organizations, person.communities)
-    end
+    # puts ""
+    # puts "#"
+    # puts "# Case: Organization representative is a member of multiple tribes"
+    # puts "#"
+    # puts ""
+    # Person.select { |person| person.organizations.count > 0 && person.communities.count > 1 } .each do |person|
+    #   puts "'#{person.name}' represents organizations #{person.organizations.collect(&:name)} and is a member in communities: #{person.communities.collect(&:name)}"
+    #   migrate_organization_member_multiple_communities!(person, person.organizations, person.communities)
+    # end
   end
 
   def down
