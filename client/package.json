@@ -6,7 +6,6 @@
     "npm": "4.2.0"
   },
   "scripts": {
-    "ensure-node-version": "check-node-version --package",
     "lint": "npm run eslint && npm run stylelint",
     "eslint": "npm run ensure-node-version && eslint .",
     "stylelint": "npm run ensure-node-version && stylelint **/*.css",
