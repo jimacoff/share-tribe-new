@@ -1,9 +1,5 @@
 class AddDefaultCategories < ActiveRecord::Migration[4.2]
-
-
   def up
-    # add_column :categories, :community_id, :integer
-    add_column :categories, :url, :string
     load_default_categories_to_db({:without_description_translations => true, :without_price_updates => true})
     # the above method was changed too much to run this migration on older installations so copy the relevant code here
   end
@@ -11,7 +7,6 @@ class AddDefaultCategories < ActiveRecord::Migration[4.2]
   def down
     puts "THIS MIGRATION ADDS DEFAULT CATEGORIES IF NOT ALREADY IN DB. SO ROLLBACK WON'T DELETE THOSE."
   end
-
 
   DEFAULT_CATEGORIES = [
     {
