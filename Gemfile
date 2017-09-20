@@ -165,3 +165,14 @@ gem 'redcarpet', '~> 3.4.0'
 gem 'intercom'
 
 gem 'foreman' 
+
+
+gem 'figaro'
+gem 'puma'
+group :development do
+  gem 'capistrano'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rvm'
+end
