@@ -83,15 +83,14 @@ class AddDefaultCategories < ActiveRecord::Migration[4.2]
       end
     end
 
-    share_types.each do |share_type, details|
-      parent = ShareType.find_by_name(details[:parent]) if details[:parent]
-      s =  ShareType.find_by_name(share_type) || ShareType.create(:name => share_type, :icon => (details[:icon] || share_type), :parent => parent)
-      details[:categories].each do |category_name|
-        c = Category.find_by_name(category_name)
-        # CommunityCategory.create(:category => c, :share_type => s, :community_id => community_id) if c && ! CommunityCategory.find_by_category_id_and_share_type_id_and_community_id(c.id, s.id, community_id)
-      end
-
-    end
+    # share_types.each do |share_type, details|
+    #   parent = ShareType.find_by_name(details[:parent]) if details[:parent]
+    #   s =  ShareType.find_by_name(share_type) || ShareType.create(:name => share_type, :icon => (details[:icon] || share_type), :parent => parent)
+    #   details[:categories].each do |category_name|
+    #     c = Category.find_by_name(category_name)
+    #     # CommunityCategory.create(:category => c, :share_type => s, :community_id => community_id) if c && ! CommunityCategory.find_by_category_id_and_share_type_id_and_community_id(c.id, s.id, community_id)
+    #   end
+    # end
 
     update_translations(:translations => translations) unless params[:skip_translations]
 
