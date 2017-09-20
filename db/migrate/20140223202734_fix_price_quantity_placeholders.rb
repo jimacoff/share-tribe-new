@@ -1,4 +1,4 @@
-class CommunityCategory < ApplicationRecord
+class CommunityCategory < ApplicationRecord[4.2]
   belongs_to :community
   belongs_to :category
   belongs_to :share_type
