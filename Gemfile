@@ -166,7 +166,6 @@ gem 'intercom'
 
 gem 'foreman' 
 
-
 gem 'figaro'
 gem 'puma'
 group :development do

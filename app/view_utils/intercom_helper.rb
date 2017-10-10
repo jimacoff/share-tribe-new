@@ -37,7 +37,7 @@ module IntercomHelper
 
       match = domain_regexp.match(host_with_port)
 
-      ".#{match[0].split(":")[0]}"
+      ".#{match[0].split(":")[0]}" if !match[0].nil?
     end
 
     def self.intercom_shutdown(session, cookies, host_with_port)
