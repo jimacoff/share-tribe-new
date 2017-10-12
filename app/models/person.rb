@@ -162,7 +162,15 @@ class Person < ApplicationRecord
   has_attached_file   :image, styles: { :medium => "288x288#",
                       :small => "108x108#",
                       :thumb => "48x48#",
-                      :original => "600x800>" }, default_url: "/assets/profile_image/medium/missing.png"
+                      :original => "600x800>" }, default_url: "/assets/profile_image/medium/missing.png",
+                      :storage => :s3,
+                      :s3_host_name => 's3.ap-south-1.amazonaws.com',
+                      :s3_region => "ap-south-1",
+                      :bucket => "marketplace-sharetribe",
+                      :s3_credentials => {
+                        :access_key_id => 'AKIAJ34T7YGXZGYUIOJA',
+                        :secret_access_key => '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'
+                      }
                        
 
   process_in_background :image
