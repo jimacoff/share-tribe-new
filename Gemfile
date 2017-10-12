@@ -176,6 +176,7 @@ group :development do
   gem 'capistrano-rvm'
   gem 'capistrano-npm'
   gem 'capistrano-foreman'
+  gem 'capistrano3-delayed-job', '~> 1.0'
 end
 
 group :production do

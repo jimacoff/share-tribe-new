@@ -86,8 +86,11 @@ module ApplicationHelper
 
   def huge_avatar_thumb(person, options={})
     # FIXME! Need a new picture size: :large
-
-    image_url = person.image.present? ? person.image.url(:medium) : missing_avatar(:medium)
+    image_url = if person.image.present?
+                  person.image.url(:medium)
+                else
+                  missing_avatar(:large)
+                end
 
     image_tag image_url, { :alt => PersonViewUtils.person_display_name(person, @current_community) }.merge(options)
   end
