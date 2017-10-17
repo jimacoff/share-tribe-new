@@ -162,7 +162,8 @@ class Person < ApplicationRecord
   has_attached_file   :image, styles: { :medium => "288x288#",
                       :small => "108x108#",
                       :thumb => "48x48#",
-                      :original => "600x800>" }, default_url: "/assets/profile_image/medium/missing.png"
+                      :original => "600x800>" },
+                      :default_url => "/assets/profile_image/medium/missing.png"
                        
 
   process_in_background :image
